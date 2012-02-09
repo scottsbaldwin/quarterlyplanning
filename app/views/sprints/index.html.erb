@@ -1,0 +1,25 @@
+<h1>Listing sprints</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Quarter</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sprints.each do |sprint| %>
+  <tr>
+    <td><%= sprint.name %></td>
+    <td><%= sprint.quarter %></td>
+    <td><%= link_to 'Show', sprint %></td>
+    <td><%= link_to 'Edit', edit_sprint_path(sprint) %></td>
+    <td><%= link_to 'Destroy', sprint, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sprint', new_sprint_path %>
