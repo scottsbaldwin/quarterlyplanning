@@ -1,10 +1,25 @@
-<p id="notice"><%= notice %></p>
+<h1>Quarter: <%= @quarter.name %></h1>
 
-<p>
-  <b>Name:</b>
-  <%= @quarter.name %>
-</p>
+<div style="margin-bottom: 10px">
+<%= link_to 'back', quarters_path %>
+<% if is_super_admin?(current_user.login) -%>
+ | <%= link_to 'edit', edit_quarter_path(@quarter) %> | <%= link_to 'delete', @quarter, confirm: "Are you sure you want to delete #{@quarter.name}?", method: :delete %>
+<% end %>
+</div>
 
-
-<%= link_to 'Edit', edit_quarter_path(@quarter) %> |
-<%= link_to 'Back', quarters_path %>
+<table style="width: 100%">
+<tr>
+<td valign="top">
+	<h2>Initiatives</h2>
+	<%= render @quarter.initiatives %>
+	<h3>Add a New Initiative</h3>
+	<%= render "initiatives/form" %>
+</td>
+<td valign="top">
+	<h2>Sprints</h2>
+	<%= render @quarter.sprints %>
+	<h3>Add a New Sprint</h3>
+	<%= render "sprints/form" %>
+</td>
+</tr>
+</table>

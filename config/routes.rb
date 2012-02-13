@@ -1,10 +1,17 @@
 Quarterlyplanning::Application.routes.draw do
+  devise_for :users
+
   resources :quarters do
   	resources :sprints
   	resources :initiatives
   end
 
   resources :teams
+  resources :planitems
+
+  #match 'plan' => 'plan#noqtr', :as => :plan_noqtr
+  match 'plan' => redirect("/quarters"), :as => :plan_redirect
+  match 'plan/:id' => 'plan#index', :as => :plan
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -11,6 +11,126 @@
  *= require_self
  *= require_tree .
 */
+body {
+	margin: 0px;
+	padding: 0px;
+	background-color: #ddd !important;
+}
+
+#head {
+	height: 125px;
+	background-color: #454545;
+}
+
+#thinstrip {
+	height: 20px;
+	background-color: CornflowerBlue;
+}
+
+#sitename {
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: 0px;
+	width:575px;
+	height: 30px;
+	padding: 10px;
+	text-align: right;
+}
+
+#usernav {
+	margin-left: auto;
+	margin-right: 0px;
+	width:575px;
+	color: white;
+	text-align: right;
+	padding: 10px;
+}
+
+#sitename a {
+	font-family: 'Raleway', cursive;
+	font-size: 48px;
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#sitename a:hover {
+	background-color: #454545 !important;	
+}
+
+#nav {
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+}
+
+#content {
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: white;
+	padding: 10px;
+	padding-bottom: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	-moz-box-shadow: 10px 10px 5px #888;
+	-webkit-box-shadow: 10px 10px 5px #888;
+	box-shadow: 10px 10px 5px #888;
+	border: 1px solid #454545;
+}
+
+#foot {
+	height: 200px;
+	background-color: #454545;
+}
+
+h1 {
+	font-family: 'Raleway', cursive;
+	font-size: 36px;
+	color: CornflowerBlue;
+	text-transform: lowercase;
+}
+
+h2 {
+	font-family: 'Raleway', cursive;
+	font-size: 24px;
+	color: black;
+	text-transform: lowercase;
+}
+
+.field label {
+	display: inline-block;
+	vertical-align: top;
+	width: 80px;
+}
+
+.field .indentField {
+	margin-left: 80px;
+}
+
+.field input, .field textarea, .field select {
+	border: 1px solid CornflowerBlue;
+	padding: 10px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-size: 12pt;
+	text-align: left;
+}
+
+.field textarea {
+	text-align: left !important;
+}
+
+.actions {
+	margin-left: 80px;
+	padding: 3px;
+}
+
+.leftAlign {
+	text-align: left !important;
+}
+
 table {
 	border-collapse: collapse;
 }
@@ -22,4 +142,103 @@ table td, table th {
 
 table th {
 	background-color: #ddd;
+}
+
+.circleButton {
+	text-decoration: none;
+	font-weight: normal;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -khtml-border-radius: 8px;
+    font-size: 10px;
+    line-height: 16px;
+    text-align: center;
+    color: #fff;
+	background-color: #12295d;
+    display: inline-block;
+}
+
+.circleButton:visited, .circleButton:active {
+    color: #fff;
+}
+
+.circleButton:hover {
+    background-color: Orange;
+}
+
+.initiative0 { background-color:LightBlue;}
+.initiative1 { background-color:Thistle;}
+.initiative2 { background-color:YellowGreen;}
+.initiative3 { background-color:Orange;}
+.initiative4 { background-color:Khaki;}
+.initiative5 { background-color:LightCoral;}
+.initiative6 { background-color:Aquamarine;}
+
+.sprintListItem {
+	padding: 2px;
+	margin: 1px;
+	border: 1px solid #ccc;
+	clear: both;
+	vertical-align: middle;
+	min-height: 20px;
+}
+
+.planItemType {
+	font-weight: normal;
+	padding: 2px;
+	margin-right: 2px;
+	border: 1px solid black;
+	margin-left: -2px;
+	width: 15px;
+	height: 15px;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.planItemTypeN {
+	background-color: green;
+	color: white;
+}
+
+.planItemTypeD {
+	background-color: red;
+	color: white;
+}
+
+.planItemTypeI {
+	background-color: yellow;
+	color: black;
+}
+
+.button {
+	text-transform: lowercase;
+  padding: 10px 25px 10px 25px;
+  font-family: 'Raleway', cursive;
+	font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  color: #ffffff !important;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+
+   background: #12295d;
+  background: -moz-linear-gradient(#245192, #1e3b73 75%, #12295d);
+  background: -webkit-gradient(linear,left top,left bottom,color-stop(0, #245192),color-stop(.75, #1e3b73),color-stop(1, #12295d));
+  border: 1px solid #0f2557;
+}
+
+.button:hover {
+   background: #618926;
+  background: -moz-linear-gradient(#98ba40, #a6c250 35%, #618926);
+  background: -webkit-gradient(linear,left top,left bottom,color-stop(0, #98ba40),color-stop(.35, #a6c250),color-stop(1, #618926));
+  border: 1px solid #618926;
+}
+
+.evenRow {
+	background-color: #eee;
 }

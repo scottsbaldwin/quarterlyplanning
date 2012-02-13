@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Quarterly Planning</title>
+  <title>Quarterly Planning <%= @quarter != nil ? ":: #{@quarter.name}" : "" %></title>
+	<link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="head">
+	<div id="thinstrip"></div>
+	<div id="sitename"><%= link_to "quarterly planning", root_path %></div>
+	<div id="usernav">
+		<% if user_signed_in? %>
+		Hi, <%= current_user.login %>! 
+	    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+		<% end %>
+	</div>
+</div>
 
-<%= yield %>
+<div id="content">
+	<% if user_signed_in? && is_super_admin?(current_user.login) -%>
+	<div class="topnav">
+		<%= link_to "quarters", quarters_path %> | <%= link_to "teams", teams_path %>
+	</div>
+	<% end %>
+
+	<p class="alert"><%= alert %></p>
+	<p id="notice" class="notice"><%= notice %></p>
+
+	<%= yield %>
+</div>
+
+<div id="foot"></div>
 
 </body>
 </html>

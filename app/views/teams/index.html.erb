@@ -1,25 +1,28 @@
-<h1>Listing teams</h1>
+<h1>Teams</h1>
 
 <table>
   <tr>
     <th>Name</th>
     <th>Group</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Actions</th>
   </tr>
 
 <% @teams.each do |team| %>
   <tr>
     <td><%= team.name %></td>
     <td><%= team.group %></td>
-    <td><%= link_to 'Show', team %></td>
-    <td><%= link_to 'Edit', edit_team_path(team) %></td>
-    <td><%= link_to 'Destroy', team, confirm: 'Are you sure?', method: :delete %></td>
+    <td>
+		<% if is_super_admin?(current_user.login) -%>
+    	<%= link_to 'Edit', edit_team_path(team) %> |
+    	<%= link_to 'Delete', team, confirm: "Are you sure you want to delete #{team.name}?", method: :delete %>
+		<% end %>
+	</td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Team', new_team_path %>
+<% if is_super_admin?(current_user.login) -%>
+<%= link_to 'New Team', new_team_path, :class => "button" %>
+<% end %>

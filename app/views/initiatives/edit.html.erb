@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @initiative %> |
-<%= link_to 'Back', initiatives_path %>
+<%= link_to 'back', quarter_path(@initiative.quarter) %>
+<%= link_to 'delete', quarter_initiative_path(@initiative.quarter, @initiative), confirm: 'Are you sure you want to delete this initiative?', method: :delete %>

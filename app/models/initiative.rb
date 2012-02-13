@@ -1,3 +1,6 @@
 class Initiative < ActiveRecord::Base
-  belongs_to :quarter
+	validates :name, :presence => true
+	validates :priority, :numericality => { :greater_than_or_equal_to => 0, :only_integer => true }
+ 
+	belongs_to :quarter
 end

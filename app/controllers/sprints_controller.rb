@@ -2,12 +2,8 @@ class SprintsController < ApplicationController
   # GET /sprints
   # GET /sprints.json
   def index
-    @sprints = Sprint.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @sprints }
-    end
+	@quarter = Quarter.find(params[:quarter_id])
+	redirect_to quarter_path(@quarter)
   end
 
   # GET /sprints/1
@@ -21,10 +17,11 @@ class SprintsController < ApplicationController
     end
   end
 
-  # GET /sprints/new
-  # GET /sprints/new.json
+  # GET /quarters/1/sprints/new
+  # GET /quarters/1/sprints/new.json
   def new
-    @sprint = Sprint.new
+	@quarter = Quarter.find(params[:quarter_id])
+    @sprint = @quarter.sprints.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +37,12 @@ class SprintsController < ApplicationController
   # POST /sprints
   # POST /sprints.json
   def create
-    @sprint = Sprint.new(params[:sprint])
+	@quarter = Quarter.find(params[:quarter_id])
+    @sprint = @quarter.sprints.create(params[:sprint])
 
     respond_to do |format|
       if @sprint.save
-        format.html { redirect_to @sprint, notice: 'Sprint was successfully created.' }
+        format.html { redirect_to quarter_path(@quarter), notice: "#{@sprint.name} was successfully created." }
         format.json { render json: @sprint, status: :created, location: @sprint }
       else
         format.html { render action: "new" }
@@ -56,11 +54,12 @@ class SprintsController < ApplicationController
   # PUT /sprints/1
   # PUT /sprints/1.json
   def update
-    @sprint = Sprint.find(params[:id])
+	@quarter = Quarter.find(params[:quarter_id])
+    @sprint = @quarter.sprints.find(params[:id])
 
     respond_to do |format|
       if @sprint.update_attributes(params[:sprint])
-        format.html { redirect_to @sprint, notice: 'Sprint was successfully updated.' }
+        format.html { redirect_to @quarter, notice: 'Sprint was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -72,11 +71,12 @@ class SprintsController < ApplicationController
   # DELETE /sprints/1
   # DELETE /sprints/1.json
   def destroy
-    @sprint = Sprint.find(params[:id])
+	@quarter = Quarter.find(params[:quarter_id])
+    @sprint = @quarter.sprints.find(params[:id])
     @sprint.destroy
 
     respond_to do |format|
-      format.html { redirect_to sprints_url }
+      format.html { redirect_to quarter_path(@quarter) }
       format.json { head :no_content }
     end
   end

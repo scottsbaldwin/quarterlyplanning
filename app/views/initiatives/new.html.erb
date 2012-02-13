@@ -1,5 +1,5 @@
-<h1>New initiative</h1>
+<h1>Adding Initiative for <%= @initiative.quarter.name %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', initiatives_path %>
+<%= link_to 'back', quarter_path(@initiative.quarter) %>

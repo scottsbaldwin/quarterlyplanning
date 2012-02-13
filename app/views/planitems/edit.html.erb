@@ -1,0 +1,6 @@
+<h1>Edit Plan Item</h1>
+
+<%= render 'form' %>
+
+<%= link_to "back to #{@planitem.sprint.quarter.name} plan", plan_path(@planitem.sprint.quarter.name) %>
+<%= link_to 'delete', planitem_path(@planitem), confirm: 'Are you sure you want to delete this plan item?', method: :delete %>

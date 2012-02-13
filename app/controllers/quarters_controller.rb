@@ -2,7 +2,7 @@ class QuartersController < ApplicationController
   # GET /quarters
   # GET /quarters.json
   def index
-    @quarters = Quarter.all
+    @quarters = Quarter.order(:name)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +14,8 @@ class QuartersController < ApplicationController
   # GET /quarters/1.json
   def show
     @quarter = Quarter.find(params[:id])
+	@initiative = @quarter.initiatives.new
+	@sprint = @quarter.sprints.new
 
     respond_to do |format|
       format.html # show.html.erb

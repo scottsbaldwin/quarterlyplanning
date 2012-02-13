@@ -1,0 +1,3 @@
+<% if initiative.id != nil %>
+<%= link_to "#{initiative.priority}. #{initiative.name}", edit_quarter_initiative_path(initiative.quarter, initiative) %><br/>
+<% end %>

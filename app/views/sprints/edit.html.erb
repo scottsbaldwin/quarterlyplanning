@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @sprint %> |
-<%= link_to 'Back', sprints_path %>
+<%= link_to 'back', quarter_path(@sprint.quarter) %>
+<%= link_to 'delete', quarter_sprint_path(@sprint.quarter, @sprint), confirm: 'Are you sure you want to delete this sprint?', method: :delete %>

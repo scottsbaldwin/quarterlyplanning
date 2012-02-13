@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  team: 
+  initiative: 
+  sprint: 
+  description: MyString
+  itemtype: MyString
+  committed: false
+  notes: MyText
+
+two:
+  team: 
+  initiative: 
+  sprint: 
+  description: MyString
+  itemtype: MyString
+  committed: false
+  notes: MyText

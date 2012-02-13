@@ -1,23 +1,25 @@
-<h1>Listing quarters</h1>
+<h1>Quarters</h1>
 
 <table>
   <tr>
     <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Actions</th>
   </tr>
 
 <% @quarters.each do |quarter| %>
   <tr>
-    <td><%= quarter.name %></td>
-    <td><%= link_to 'Show', quarter %></td>
-    <td><%= link_to 'Edit', edit_quarter_path(quarter) %></td>
-    <td><%= link_to 'Destroy', quarter, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to quarter.name, plan_path(:id => quarter.name) %></td>
+    <td>
+		<% if is_super_admin?(current_user.login) -%>
+		<%= link_to "Manage", quarter %>
+		<% end %>
+	</td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Quarter', new_quarter_path %>
+<% if is_super_admin?(current_user.login) -%>
+<%= link_to 'New Quarter', new_quarter_path, :class => "button" %>
+<% end %>

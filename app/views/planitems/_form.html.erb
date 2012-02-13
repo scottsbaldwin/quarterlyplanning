@@ -1,0 +1,45 @@
+<%= form_for(@planitem) do |f| %>
+  <% if @planitem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@planitem.errors.count, "error") %> prohibited this plan item from being saved:</h2>
+
+      <ul>
+      <% @planitem.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :initiative_id %>
+    <%= f.collection_select :initiative_id, @initiatives, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :sprint_id %>
+    <%= f.collection_select :sprint_id, @sprints, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :team_id %>
+    <%= f.collection_select :team_id, @teams, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :itemtype, "Item type" %>
+    <%= f.select :itemtype, options_for_select([['normal', 'normal'], ['dependency', 'dependency'], ['impact', 'impact']], @planitem.itemtype) %>
+  </div>
+  <div class="field">
+    <%= f.label :committed, "Committed?" %>
+    <%= f.check_box :committed %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %>
+    <%= f.text_area :notes %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit", :class => "button" %>
+  </div>
+<% end %>

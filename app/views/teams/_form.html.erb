@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :group %><br />
-    <%= f.text_field :group %>
+    <%= f.label :group %>
+    <%= f.select :group, options_for_select([['Applications', 'Applications'], ['Services', 'Services'], ['Other', 'Other']], @team.group) %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit", :class => "button" %>
   </div>
 <% end %>

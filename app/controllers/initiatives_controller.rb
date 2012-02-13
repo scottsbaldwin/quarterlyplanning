@@ -2,12 +2,8 @@ class InitiativesController < ApplicationController
   # GET /initiatives
   # GET /initiatives.json
   def index
-    @initiatives = Initiative.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @initiatives }
-    end
+	@quarter = Quarter.find(params[:quarter_id])
+	redirect_to quarter_path(@quarter)
   end
 
   # GET /initiatives/1
@@ -21,30 +17,33 @@ class InitiativesController < ApplicationController
     end
   end
 
-  # GET /initiatives/new
-  # GET /initiatives/new.json
+  # GET /quarters/1/initiatives/new
+  # GET /quarters/1/initiatives/new.json
   def new
-    @initiative = Initiative.new
+	@quarter = Quarter.find(params[:quarter_id])
+    @initiative = @quarter.initiatives.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @initiative }
+      format.json { render json: @quarter }
     end
   end
 
-  # GET /initiatives/1/edit
+  # GET /quarter/1/initiatives/1/edit
   def edit
-    @initiative = Initiative.find(params[:id])
+	@quarter = Quarter.find(params[:quarter_id])
+    @initiative = @quarter.initiatives.find(params[:id])
   end
 
   # POST /initiatives
   # POST /initiatives.json
   def create
-    @initiative = Initiative.new(params[:initiative])
+	@quarter = Quarter.find(params[:quarter_id])
+	@initiative = @quarter.initiatives.create(params[:initiative])
 
     respond_to do |format|
       if @initiative.save
-        format.html { redirect_to @initiative, notice: 'Initiative was successfully created.' }
+        format.html { redirect_to quarter_path(@quarter), notice: "#{@initiative.name} was successfully created." }
         format.json { render json: @initiative, status: :created, location: @initiative }
       else
         format.html { render action: "new" }
@@ -56,11 +55,12 @@ class InitiativesController < ApplicationController
   # PUT /initiatives/1
   # PUT /initiatives/1.json
   def update
-    @initiative = Initiative.find(params[:id])
+	@quarter = Quarter.find(params[:quarter_id])
+    @initiative = @quarter.initiatives.find(params[:id])
 
     respond_to do |format|
       if @initiative.update_attributes(params[:initiative])
-        format.html { redirect_to @initiative, notice: 'Initiative was successfully updated.' }
+        format.html { redirect_to @quarter, notice: 'Initiative was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -72,11 +72,12 @@ class InitiativesController < ApplicationController
   # DELETE /initiatives/1
   # DELETE /initiatives/1.json
   def destroy
-    @initiative = Initiative.find(params[:id])
+	@quarter = Quarter.find(params[:quarter_id])
+    @initiative = @quarter.initiatives.find(params[:id])
     @initiative.destroy
 
     respond_to do |format|
-      format.html { redirect_to initiatives_url }
+      format.html { redirect_to quarter_path(@quarter) }
       format.json { head :no_content }
     end
   end

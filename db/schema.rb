@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120209205657) do
+ActiveRecord::Schema.define(:version => 20120213165511) do
 
   create_table "initiatives", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,22 @@ ActiveRecord::Schema.define(:version => 20120209205657) do
   end
 
   add_index "initiatives", ["quarter_id"], :name => "index_initiatives_on_quarter_id"
+
+  create_table "planitems", :force => true do |t|
+    t.integer  "team_id"
+    t.integer  "initiative_id"
+    t.integer  "sprint_id"
+    t.string   "description"
+    t.string   "itemtype"
+    t.boolean  "committed"
+    t.text     "notes"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "planitems", ["initiative_id"], :name => "index_planitems_on_initiative_id"
+  add_index "planitems", ["sprint_id"], :name => "index_planitems_on_sprint_id"
+  add_index "planitems", ["team_id"], :name => "index_planitems_on_team_id"
 
   create_table "quarters", :force => true do |t|
     t.string   "name"
@@ -44,5 +60,22 @@ ActiveRecord::Schema.define(:version => 20120209205657) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "email",                              :default => "", :null => false
+    t.string   "encrypted_password",  :limit => 128, :default => "", :null => false
+    t.string   "remember_token"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                      :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
+    t.string   "login",                              :default => "", :null => false
+  end
+
+  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 
 end

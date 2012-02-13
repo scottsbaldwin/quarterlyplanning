@@ -1,4 +1,4 @@
-<%= form_for(@initiative) do |f| %>
+<%= form_for([@initiative.quarter, @initiative]) do |f| %>
   <% if @initiative.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@initiative.errors.count, "error") %> prohibited this initiative from being saved:</h2>
@@ -12,18 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :priority %><br />
-    <%= f.number_field :priority %>
-  </div>
-  <div class="field">
-    <%= f.label :quarter %><br />
-    <%= f.text_field :quarter %>
+    <%= f.label :priority %>
+    <%= f.number_field :priority, :min => 0 %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit", :class => "button" %>
   </div>
 <% end %>

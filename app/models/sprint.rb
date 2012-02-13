@@ -1,3 +1,4 @@
 class Sprint < ActiveRecord::Base
-  belongs_to :quarter
+	validates :name, :presence => true
+	belongs_to :quarter
 end
