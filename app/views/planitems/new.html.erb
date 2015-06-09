@@ -2,4 +2,4 @@
 
 <%= render 'form' %>
 
-<%= link_to "back to #{@sprint.quarter.name} plan", plan_path + '/' + @sprint.quarter.name %>
+<%= link_to "back to #{@sprint.quarter.name} plan", plan_path(:id => @sprint.quarter.name) %>

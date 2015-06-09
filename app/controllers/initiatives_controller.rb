@@ -39,7 +39,7 @@ class InitiativesController < ApplicationController
   # POST /initiatives.json
   def create
 	@quarter = Quarter.find(params[:quarter_id])
-	@initiative = @quarter.initiatives.create(params[:initiative])
+	@initiative = @quarter.initiatives.create(initiative_params)
 
     respond_to do |format|
       if @initiative.save
@@ -59,7 +59,7 @@ class InitiativesController < ApplicationController
     @initiative = @quarter.initiatives.find(params[:id])
 
     respond_to do |format|
-      if @initiative.update_attributes(params[:initiative])
+      if @initiative.update_attributes(initiative_params)
         format.html { redirect_to @quarter, notice: 'Initiative was successfully updated.' }
         format.json { head :no_content }
       else
@@ -80,5 +80,10 @@ class InitiativesController < ApplicationController
       format.html { redirect_to quarter_path(@quarter) }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def initiative_params
+    params.require(:initiative).permit(:name, :priority)
   end
 end

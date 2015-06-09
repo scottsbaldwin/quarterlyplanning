@@ -1,7 +1,7 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  # ==> LDAP Configuration 
+  # ==> LDAP Configuration
   # config.ldap_logger = true
   # config.ldap_create_user = false
   # config.ldap_update_password = true
@@ -10,20 +10,20 @@ Devise.setup do |config|
   # config.ldap_check_attributes = false
   # config.ldap_use_admin_to_bind = false
   # config.ldap_ad_group_check = false
-  
-  # ==> LDAP Configuration 
-  config.ldap_logger = true
-  config.ldap_create_user = true
-  config.ldap_update_password = false
 
-  config.ldap_auth_username_builder=Proc.new() {|attribute, login, ldap| "#{attribute}=#{login}" }
+  # ==> LDAP Configuration
+  # config.ldap_logger = true
+  # config.ldap_create_user = true
+  # config.ldap_update_password = false
+
+  # config.ldap_auth_username_builder=Proc.new() {|attribute, login, ldap| "#{attribute}=#{login}" }
 
   # config.ldap_config = "#{Rails.root}/config/ldap.yml"
-  config.ldap_check_group_membership = false
-  config.ldap_check_attributes = false
-  config.ldap_use_admin_to_bind = true
+  # config.ldap_check_group_membership = false
+  # config.ldap_check_attributes = false
+  # config.ldap_use_admin_to_bind = true
   # config.ldap_ad_group_check = false
-  
+
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
@@ -117,7 +117,7 @@ Devise.setup do |config|
 
   # If true, uses the password salt as remember token. This should be turned
   # to false if you are not using database authenticatable.
-  config.use_salt_as_remember_token = false
+  # config.use_salt_as_remember_token = false
 
   # Options to be passed to the created cookie. For instance, you can set
   # :secure => true in order to force SSL only cookies.
@@ -229,4 +229,5 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
+  config.secret_key = 'eb3c3a20e38b11c9e7534e18b5edfdb22230b3cfcae893bfc7b0b86e7ae1e89531ed104b0fdebd032376a266011e5663f6606cedad7fc64cfc7e79959219e32e'
 end

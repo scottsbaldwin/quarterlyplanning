@@ -4,7 +4,7 @@ class PlanController < ApplicationController
   end
 
   def index
-    @teams = Team.where(:group => ["Applications", "Services"]).order("`group`", :name)
+    @teams = Team.where(:grouping => ["Applications", "Services"]).order("grouping", :name)
 	@quarter = Quarter.where(:name => params[:id]).first
 
 	@filters = []

@@ -38,7 +38,7 @@ class SprintsController < ApplicationController
   # POST /sprints.json
   def create
 	@quarter = Quarter.find(params[:quarter_id])
-    @sprint = @quarter.sprints.create(params[:sprint])
+    @sprint = @quarter.sprints.create(sprint_params)
 
     respond_to do |format|
       if @sprint.save
@@ -58,7 +58,7 @@ class SprintsController < ApplicationController
     @sprint = @quarter.sprints.find(params[:id])
 
     respond_to do |format|
-      if @sprint.update_attributes(params[:sprint])
+      if @sprint.update_attributes(sprint_params)
         format.html { redirect_to @quarter, notice: 'Sprint was successfully updated.' }
         format.json { head :no_content }
       else
@@ -79,5 +79,10 @@ class SprintsController < ApplicationController
       format.html { redirect_to quarter_path(@quarter) }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def sprint_params
+    params.require(:sprint).permit(:name)
   end
 end

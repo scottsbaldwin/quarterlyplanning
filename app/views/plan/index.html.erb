@@ -13,7 +13,7 @@
 <% @teams.each_with_index do |team, index| %>
 <% if index % 10 == 0 %>
 <tr>
-<th>Team (Group)</th>
+<th>Team (Grouping)</th>
 <% @quarter.sprints.each do |sprint| %>
 <th><%= sprint.name %></th>
 <% end %>
@@ -32,7 +32,7 @@
 <% end %>
 
 <tr class="<%= (index % 2 != 0) ? 'oddRow' : 'evenRow' %>">
-<td><%= team.name %><br/>(<%= team.group %>)</td>
+<td><%= team.name %><br/>(<%= team.grouping %>)</td>
 	<% @quarter.sprints.each do |sprint| %>
 	<td valign="top">
 		<%= link_to "+", new_planitem_path + "?team=#{team.id}&sprint=#{sprint.id}", :title => "Add a new item for #{team.name} in #{sprint.name}.", :class => "circleButton" %>

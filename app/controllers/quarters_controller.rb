@@ -42,7 +42,7 @@ class QuartersController < ApplicationController
   # POST /quarters
   # POST /quarters.json
   def create
-    @quarter = Quarter.new(params[:quarter])
+    @quarter = Quarter.new(quarter_params)
 
     respond_to do |format|
       if @quarter.save
@@ -61,7 +61,7 @@ class QuartersController < ApplicationController
     @quarter = Quarter.find(params[:id])
 
     respond_to do |format|
-      if @quarter.update_attributes(params[:quarter])
+      if @quarter.update_attributes(quarter_params)
         format.html { redirect_to @quarter, notice: 'Quarter was successfully updated.' }
         format.json { head :no_content }
       else
@@ -81,5 +81,10 @@ class QuartersController < ApplicationController
       format.html { redirect_to quarters_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def quarter_params
+    params.require(:quarter).permit(:name, :grouping)
   end
 end

@@ -70,7 +70,7 @@ class PlanitemsController < ApplicationController
   # POST /planitems
   # POST /planitems.json
   def create
-    @planitem = Planitem.new(params[:planitem])
+    @planitem = Planitem.new(planitems_params)
 
     respond_to do |format|
       if @planitem.save
@@ -93,7 +93,7 @@ class PlanitemsController < ApplicationController
     @planitem = Planitem.find(params[:id])
 
     respond_to do |format|
-      if @planitem.update_attributes(params[:planitem])
+      if @planitem.update_attributes(planitems_params)
         format.html { redirect_to "#{plan_path(@planitem.sprint.quarter.name)}", notice: 'Plan item was successfully updated.' }
         format.json { head :no_content }
       else
@@ -114,6 +114,11 @@ class PlanitemsController < ApplicationController
       format.html { redirect_to plan_path(qtrname) }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def planitems_params
+    params.require(:planitem).permit(:description, :initiative_id, :sprint_id, :team_id, :itemtype, :committed, :notes)
   end
 
 end

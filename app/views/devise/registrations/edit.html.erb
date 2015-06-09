@@ -1,0 +1,62 @@
+<h1>your account</h1>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { role: 'form', class: 'form-horizontal', :method => :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="form-group">
+    <%= f.label :first_name, class: 'col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_field :first_name, :class => "form-control input-lg" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name, class: 'col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_field :last_name, :class => "form-control input-lg" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, class: 'col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.email_field :email, :class => "form-control input-lg" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div><i>(leave blank if you don't want to change it)</i></div>
+    <%= f.label :password, class: 'col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.password_field :password, :class => "form-control input-lg" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, class: 'col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.password_field :password_confirmation, :class => "form-control input-lg" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div><i>(we need your current password to confirm your changes)</i></div>
+    <%= f.label :current_password, class: 'col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.password_field :current_password, :class => "form-control input-lg" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+  </div>
+<% end %>
+
+<h2>remove my account</h2>
+
+<p>Unhappy? <%= link_to "remove my account", registration_path(resource_name), data: { confirm: "Are you sure you want to remove your account?" }, :method => :delete, class: 'btn btn-danger' %></p>
+
+<%= link_to "Back", :back %>

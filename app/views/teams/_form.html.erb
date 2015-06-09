@@ -16,8 +16,8 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :group %>
-    <%= f.select :group, options_for_select([['Applications', 'Applications'], ['Services', 'Services'], ['Other', 'Other']], @team.group) %>
+    <%= f.label :grouping %>
+    <%= f.select :grouping, options_for_select([['Applications', 'Applications'], ['Services', 'Services'], ['Other', 'Other']], @team.grouping) %>
   </div>
   <div class="actions">
     <%= f.submit "Submit", :class => "button" %>

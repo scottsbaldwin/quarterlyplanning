@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  group: 
+  grouping:
 
 two:
   name: MyString
-  group: 
+  grouping:

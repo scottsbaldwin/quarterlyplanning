@@ -3,14 +3,14 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Group</th>
+    <th>Grouping</th>
     <th>Actions</th>
   </tr>
 
 <% @teams.each do |team| %>
   <tr>
     <td><%= team.name %></td>
-    <td><%= team.group %></td>
+    <td><%= team.grouping %></td>
     <td>
 		<% if is_super_admin?(current_user.login) -%>
     	<%= link_to 'Edit', edit_team_path(team) %> |

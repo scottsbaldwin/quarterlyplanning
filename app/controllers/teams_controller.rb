@@ -2,7 +2,7 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.order("UPPER(`group`) asc, UPPER(name) asc")
+    @teams = Team.order("UPPER(grouping) asc, UPPER(name) asc")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,7 +40,7 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
-    @team = Team.new(params[:team])
+    @team = Team.new(team_params)
 
     respond_to do |format|
       if @team.save
@@ -59,7 +59,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
 
     respond_to do |format|
-      if @team.update_attributes(params[:team])
+      if @team.update_attributes(team_params)
         format.html { redirect_to teams_path, notice: "#{@team.name} was successfully updated." }
         format.json { head :no_content }
       else
@@ -80,5 +80,10 @@ class TeamsController < ApplicationController
       format.html { redirect_to teams_url, notice: "#{team_name} was successfully deleted." }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def team_params
+    params.require(:team).permit(:name, :grouping)
   end
 end

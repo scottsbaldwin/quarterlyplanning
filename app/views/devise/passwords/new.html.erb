@@ -1,0 +1,21 @@
+<h2>Forgot your password?</h2>
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { method: :post, class: 'form-horizontal', role: 'form' }) do |f| %>
+  <%= devise_error_messages! %>
+  <div class="form-group">
+    <%= f.label :email, class: 'col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_field :email, :class => "form-control input-lg" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-primary">
+	<span class="glyphicon glyphicon-hand-right"></span>
+        Send reset instructions
+      </button>
+    </div>
+  </div>
+<% end %>
